@@ -1,4 +1,4 @@
-﻿using DocsUnmessed.CLI;
+using DocsUnmessed.CLI;
 using DocsUnmessed.CLI.Commands;
 using DocsUnmessed.Connectors;
 using DocsUnmessed.Core.Interfaces;
@@ -8,11 +8,11 @@ using DocsUnmessed.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-// Load configuration
+// Load configuration from config folder
 var configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("appsettings.json", optional: false)
-    .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "Production"}.json", optional: true)
+    .AddJsonFile("config/appsettings.json", optional: false)
+    .AddJsonFile($"config/appsettings.{Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "Production"}.json", optional: true)
     .Build();
 
 // Get connection string
