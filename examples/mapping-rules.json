@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Downloads-PDF-Archive",
+    "match": {
+      "provider": "fs_local",
+      "pathRegex": "(?i)(Downloads/).*\\.pdf$",
+      "ageDaysMin": 90
+    },
+    "target": {
+      "location": "OneDrive://03_Tech/99_Archive/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "TimestampSuffix",
+    "priority": 100
+  },
+  {
+    "name": "Photos-EXIF-Organization",
+    "match": {
+      "provider": "fs_local",
+      "extensions": ["jpg", "jpeg", "png", "heic"],
+      "pathRegex": "(?i)(Pictures|Photos)/"
+    },
+    "target": {
+      "location": "OneDrive://04_Media/Photos/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 200
+  },
+  {
+    "name": "Recent-Documents",
+    "match": {
+      "extensions": ["docx", "xlsx", "pptx"],
+      "ageDaysMax": 30
+    },
+    "target": {
+      "location": "OneDrive://02_Work/Recent/"
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 150
+  }
+]

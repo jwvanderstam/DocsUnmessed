@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DocsUnmessed": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

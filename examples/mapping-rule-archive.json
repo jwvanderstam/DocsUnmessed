@@ -1,0 +1,85 @@
+[
+  {
+    "name": "Archive-Old-Office-Documents",
+    "match": {
+      "extensions": ["doc", "docx", "xls", "xlsx", "ppt", "pptx"],
+      "ageDaysMin": 180
+    },
+    "target": {
+      "location": "OneDrive://03_Tech/99_Archive/Office/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "TimestampSuffix",
+    "priority": 300
+  },
+  {
+    "name": "Old-PDF-Manuals",
+    "match": {
+      "pathRegex": "(?i)(manual|guide|instructions)",
+      "extensions": ["pdf"],
+      "ageDaysMin": 90
+    },
+    "target": {
+      "location": "OneDrive://01_Personal/Reference/Manuals/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 250
+  },
+  {
+    "name": "Financial-Documents-Recent",
+    "match": {
+      "pathRegex": "(?i)(invoice|receipt|tax|bank|finance)",
+      "extensions": ["pdf", "xlsx"],
+      "ageDaysMax": 365
+    },
+    "target": {
+      "location": "OneDrive://01_Personal/Finance/Recent/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 400
+  },
+  {
+    "name": "Financial-Documents-Archive",
+    "match": {
+      "pathRegex": "(?i)(invoice|receipt|tax|bank|finance)",
+      "extensions": ["pdf", "xlsx"],
+      "ageDaysMin": 365
+    },
+    "target": {
+      "location": "OneDrive://01_Personal/Finance/Archive/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "TimestampSuffix",
+    "priority": 350
+  },
+  {
+    "name": "Screenshots-Recent",
+    "match": {
+      "pathRegex": "(?i)(screenshot|screen shot|capture)",
+      "extensions": ["png", "jpg", "jpeg"],
+      "ageDaysMax": 30
+    },
+    "target": {
+      "location": "OneDrive://04_Media/Screenshots/",
+      "namingTemplate": null
+    },
+    "conflictPolicy": "TimestampSuffix",
+    "priority": 200
+  },
+  {
+    "name": "Code-Archives",
+    "match": {
+      "extensions": ["zip", "rar", "7z", "tar", "gz"],
+      "pathRegex": "(?i)(code|project|backup)",
+      "ageDaysMin": 60
+    },
+    "target": {
+      "location": "OneDrive://03_Tech/Archives/",
+      "namingTemplate": null
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 180
+  }
+]

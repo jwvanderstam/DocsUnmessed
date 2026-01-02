@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:DocsUnmessed.GUI.ViewModels"
+             x:Class="DocsUnmessed.GUI.Views.AssessPage"
+             x:DataType="vm:AssessViewModel"
+             Title="Assess Files">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Page Header -->
+            <Label Text="Assess Your Files" 
+                   FontSize="28" 
+                   FontAttributes="Bold"/>
+            <Label Text="Scan your storage to analyze files and prepare for organization"
+                   FontSize="14"
+                   TextColor="Gray"
+                   Margin="0,0,0,10"/>
+
+            <!-- Configuration Section -->
+            <Frame Padding="20" CornerRadius="10" BackgroundColor="#F9F9F9">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Scan Configuration" 
+                           FontSize="18" 
+                           FontAttributes="Bold"/>
+
+                    <!-- Root Path -->
+                    <Label Text="Root Directory" FontSize="14" FontAttributes="Bold"/>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                        <Entry Grid.Column="0" 
+                               Text="{Binding RootPath}"
+                               Placeholder="Select directory to scan"
+                               FontSize="14"/>
+                        <Button Grid.Column="1" 
+                                Text="Browse" 
+                                Command="{Binding BrowseDirectoryCommand}"
+                                BackgroundColor="#007bff"
+                                TextColor="White"
+                                WidthRequest="100"/>
+                    </Grid>
+
+                    <!-- Provider Selection -->
+                    <Label Text="Storage Provider" FontSize="14" FontAttributes="Bold" Margin="0,10,0,0"/>
+                    <Picker ItemsSource="{Binding AvailableProviders}"
+                            SelectedItem="{Binding SelectedProvider}"
+                            FontSize="14"/>
+
+                    <!-- Options -->
+                    <Label Text="Scan Options" FontSize="14" FontAttributes="Bold" Margin="0,10,0,0"/>
+                    
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox IsChecked="{Binding ComputeHash}"/>
+                        <Label Text="Compute file hashes (slower, enables duplicate detection)" 
+                               VerticalOptions="Center"
+                               FontSize="14"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox IsChecked="{Binding ExcludeDefault}"/>
+                        <Label Text="Exclude system directories (recommended)" 
+                               VerticalOptions="Center"
+                               FontSize="14"/>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Action Buttons -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+                <Button Grid.Column="0"
+                        Text="Start Scan"
+                        Command="{Binding StartScanCommand}"
+                        IsEnabled="{Binding IsScanning, Converter={StaticResource InvertedBoolConverter}}"
+                        BackgroundColor="#28a745"
+                        TextColor="White"
+                        FontSize="16"
+                        HeightRequest="50"/>
+                
+                <Button Grid.Column="1"
+                        Text="Cancel"
+                        Command="{Binding CancelScanCommand}"
+                        IsEnabled="{Binding IsScanning}"
+                        BackgroundColor="#dc3545"
+                        TextColor="White"
+                        FontSize="16"
+                        HeightRequest="50"/>
+            </Grid>
+
+            <!-- Progress Section -->
+            <Frame Padding="20" CornerRadius="10" BackgroundColor="#F0F0F0" IsVisible="{Binding IsScanning}">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Scanning..." 
+                           FontSize="18" 
+                           FontAttributes="Bold"/>
+
+                    <ProgressBar Progress="{Binding ScanProgress, Converter={StaticResource PercentToProgressConverter}}" 
+                                 HeightRequest="10"
+                                 ProgressColor="#007bff"/>
+
+                    <Label Text="{Binding ScanStatus}" 
+                           FontSize="14"
+                           TextColor="Gray"/>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="20" Margin="0,10,0,0">
+                        <VerticalStackLayout Grid.Column="0" Spacing="5">
+                            <Label Text="Files Scanned" FontSize="12" TextColor="Gray"/>
+                            <Label Text="{Binding FilesScanned}" 
+                                   FontSize="24" 
+                                   FontAttributes="Bold"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="5">
+                            <Label Text="Folders Scanned" FontSize="12" TextColor="Gray"/>
+                            <Label Text="{Binding FoldersScanned}" 
+                                   FontSize="24" 
+                                   FontAttributes="Bold"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Total Size" FontSize="12" TextColor="Gray"/>
+                        <Label Text="{Binding TotalSize}" 
+                               FontSize="20" 
+                               FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Results Section -->
+            <Frame Padding="20" CornerRadius="10" BackgroundColor="#E8F5E9" 
+                   IsVisible="{Binding CurrentScanId, Converter={StaticResource StringToBoolConverter}}">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Scan Complete!" 
+                           FontSize="18" 
+                           FontAttributes="Bold"
+                           TextColor="#2e7d32"/>
+
+                    <Label Text="{Binding ScanStatus}" 
+                           FontSize="14"/>
+
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="15">
+                        <VerticalStackLayout Grid.Column="0" Spacing="5">
+                            <Label Text="Files" FontSize="12" TextColor="Gray"/>
+                            <Label Text="{Binding FilesScanned}" FontSize="18" FontAttributes="Bold"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="5">
+                            <Label Text="Folders" FontSize="12" TextColor="Gray"/>
+                            <Label Text="{Binding FoldersScanned}" FontSize="18" FontAttributes="Bold"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="2" Spacing="5">
+                            <Label Text="Size" FontSize="12" TextColor="Gray"/>
+                            <Label Text="{Binding TotalSize}" FontSize="18" FontAttributes="Bold"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Button Text="View Results / Migrate"
+                            Command="{Binding ViewResultsCommand}"
+                            BackgroundColor="#007bff"
+                            TextColor="White"
+                            Margin="0,10,0,0"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Help Text -->
+            <Frame Padding="15" CornerRadius="10" BackgroundColor="#FFF9C4">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Tips" FontSize="16" FontAttributes="Bold"/>
+                    <Label FontSize="13">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="• Start with a small directory to test&#10;"/>
+                                <Span Text="• Enable hash computation to find duplicates&#10;"/>
+                                <Span Text="• Default exclusions skip system directories&#10;"/>
+                                <Span Text="• Scan ID is needed for migration"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

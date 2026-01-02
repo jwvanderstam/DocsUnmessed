@@ -1,0 +1,67 @@
+[
+  {
+    "name": "TEMPLATE-Basic-Extension-Rule",
+    "match": {
+      "extensions": ["ext1", "ext2", "ext3"]
+    },
+    "target": {
+      "location": "OneDrive://CATEGORY/SUBCATEGORY/",
+      "namingTemplate": null
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 100
+  },
+  {
+    "name": "TEMPLATE-Path-Pattern-Rule",
+    "match": {
+      "pathRegex": "(?i)(keyword1|keyword2)"
+    },
+    "target": {
+      "location": "OneDrive://CATEGORY/SUBCATEGORY/",
+      "namingTemplate": null
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 100
+  },
+  {
+    "name": "TEMPLATE-Age-Based-Rule",
+    "match": {
+      "ageDaysMin": 90,
+      "ageDaysMax": null
+    },
+    "target": {
+      "location": "OneDrive://CATEGORY/Archive/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "TimestampSuffix",
+    "priority": 100
+  },
+  {
+    "name": "TEMPLATE-Composite-Rule",
+    "match": {
+      "pathRegex": "(?i)(keyword)",
+      "extensions": ["ext1", "ext2"],
+      "ageDaysMin": 30,
+      "ageDaysMax": 180
+    },
+    "target": {
+      "location": "OneDrive://CATEGORY/SUBCATEGORY/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 200
+  },
+  {
+    "name": "TEMPLATE-High-Priority-Rule",
+    "match": {
+      "pathRegex": "(?i)(important|urgent|critical)",
+      "extensions": ["pdf", "docx"]
+    },
+    "target": {
+      "location": "OneDrive://01_Personal/Important/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 500
+  }
+]

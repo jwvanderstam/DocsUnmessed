@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Video-Projects",
+    "match": {
+      "extensions": ["mp4", "mov", "avi", "mkv", "wmv"],
+      "pathRegex": "(?i)(video|movie|clip|recording)"
+    },
+    "target": {
+      "location": "OneDrive://04_Media/Videos/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 200
+  },
+  {
+    "name": "Audio-Files",
+    "match": {
+      "extensions": ["mp3", "wav", "flac", "m4a", "aac", "ogg"],
+      "pathRegex": "(?i)(music|audio|sound|podcast)"
+    },
+    "target": {
+      "location": "OneDrive://04_Media/Audio/",
+      "namingTemplate": null
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 200
+  },
+  {
+    "name": "RAW-Photos",
+    "match": {
+      "extensions": ["cr2", "nef", "arw", "dng", "raw"],
+      "pathRegex": "(?i)(photo|picture|image|dcim)"
+    },
+    "target": {
+      "location": "OneDrive://04_Media/Photos/RAW/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 250
+  },
+  {
+    "name": "Photo-Projects",
+    "match": {
+      "extensions": ["psd", "xcf", "ai", "svg"],
+      "pathRegex": "(?i)(photo|design|graphic)"
+    },
+    "target": {
+      "location": "OneDrive://04_Media/PhotoProjects/",
+      "namingTemplate": null
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 220
+  },
+  {
+    "name": "Media-Archives-Old",
+    "match": {
+      "extensions": ["mp4", "mov", "jpg", "png", "mp3"],
+      "ageDaysMin": 365
+    },
+    "target": {
+      "location": "OneDrive://04_Media/Archive/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "TimestampSuffix",
+    "priority": 150
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "name": "Downloads-PDF-Archive",
+  "match": {
+    "provider": "fs_local",
+    "pathRegex": "(?i)(Downloads/).*\\.pdf$",
+    "ageDaysMin": 90
+  },
+  "target": {
+    "location": "OneDrive://user@example.com/03_Tech/99_Archive/",
+    "namingTemplate": "StandardDateContextTitle"
+  },
+  "conflictPolicy": "TimestampSuffix",
+  "priority": 100
+}

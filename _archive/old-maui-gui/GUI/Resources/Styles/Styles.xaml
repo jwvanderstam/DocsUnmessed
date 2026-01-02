@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Button Styles -->
+    <Style TargetType="Button">
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="HeightRequest" Value="44"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="16,8"/>
+    </Style>
+
+    <!-- Frame Styles -->
+    <Style TargetType="Frame">
+        <Setter Property="HasShadow" Value="True"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="BorderColor" Value="Transparent"/>
+    </Style>
+
+    <!-- Entry Styles -->
+    <Style TargetType="Entry">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HeightRequest" Value="44"/>
+        <Setter Property="BackgroundColor" Value="White"/>
+    </Style>
+
+    <!-- Label Styles -->
+    <Style TargetType="Label">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}"/>
+    </Style>
+
+    <!-- Picker Styles -->
+    <Style TargetType="Picker">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HeightRequest" Value="44"/>
+        <Setter Property="BackgroundColor" Value="White"/>
+    </Style>
+
+    <!-- CheckBox Styles -->
+    <Style TargetType="CheckBox">
+        <Setter Property="Color" Value="{StaticResource Primary}"/>
+    </Style>
+
+    <!-- ProgressBar Styles -->
+    <Style TargetType="ProgressBar">
+        <Setter Property="ProgressColor" Value="{StaticResource Primary}"/>
+        <Setter Property="HeightRequest" Value="10"/>
+    </Style>
+
+    <!-- Converters -->
+    <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor" Value="{StaticResource PageBackground}"/>
+    </Style>
+
+</ResourceDictionary>

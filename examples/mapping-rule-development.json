@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Source-Code-Active",
+    "match": {
+      "extensions": ["cs", "js", "ts", "py", "java", "cpp", "c", "h"],
+      "ageDaysMax": 90,
+      "pathRegex": "(?i)(src|source|code|dev)"
+    },
+    "target": {
+      "location": "OneDrive://03_Tech/Development/Active/",
+      "namingTemplate": null
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 300
+  },
+  {
+    "name": "Source-Code-Archive",
+    "match": {
+      "extensions": ["cs", "js", "ts", "py", "java", "cpp", "c", "h"],
+      "ageDaysMin": 90,
+      "pathRegex": "(?i)(src|source|code|dev)"
+    },
+    "target": {
+      "location": "OneDrive://03_Tech/Development/Archive/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "TimestampSuffix",
+    "priority": 280
+  },
+  {
+    "name": "Configuration-Files",
+    "match": {
+      "extensions": ["json", "yaml", "yml", "xml", "config", "ini"],
+      "pathRegex": "(?i)(config|setting|preference)"
+    },
+    "target": {
+      "location": "OneDrive://03_Tech/Configurations/",
+      "namingTemplate": null
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 250
+  },
+  {
+    "name": "Scripts-And-Tools",
+    "match": {
+      "extensions": ["ps1", "sh", "bat", "cmd", "bash"],
+      "pathRegex": "(?i)(script|tool|util|automation)"
+    },
+    "target": {
+      "location": "OneDrive://03_Tech/Scripts/",
+      "namingTemplate": null
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 270
+  },
+  {
+    "name": "Database-Files",
+    "match": {
+      "extensions": ["db", "sqlite", "mdf", "ldf", "sql"],
+      "pathRegex": "(?i)(database|data|backup)"
+    },
+    "target": {
+      "location": "OneDrive://03_Tech/Databases/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "TimestampSuffix",
+    "priority": 260
+  },
+  {
+    "name": "Technical-Documentation",
+    "match": {
+      "extensions": ["md", "txt", "rst", "adoc"],
+      "pathRegex": "(?i)(doc|readme|guide|manual|note)"
+    },
+    "target": {
+      "location": "OneDrive://03_Tech/Documentation/",
+      "namingTemplate": null
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 240
+  }
+]

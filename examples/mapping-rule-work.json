@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Work-Documents-Current",
+    "match": {
+      "extensions": ["docx", "xlsx", "pptx", "pdf"],
+      "pathRegex": "(?i)(work|project|client|business)",
+      "ageDaysMax": 90
+    },
+    "target": {
+      "location": "OneDrive://02_Work/Current/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 350
+  },
+  {
+    "name": "Work-Documents-Archive",
+    "match": {
+      "extensions": ["docx", "xlsx", "pptx", "pdf"],
+      "pathRegex": "(?i)(work|project|client|business)",
+      "ageDaysMin": 90
+    },
+    "target": {
+      "location": "OneDrive://02_Work/Archive/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "TimestampSuffix",
+    "priority": 320
+  },
+  {
+    "name": "Meeting-Notes",
+    "match": {
+      "extensions": ["docx", "txt", "md", "pdf"],
+      "pathRegex": "(?i)(meeting|notes|minutes|agenda)"
+    },
+    "target": {
+      "location": "OneDrive://02_Work/Meetings/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 340
+  },
+  {
+    "name": "Presentations",
+    "match": {
+      "extensions": ["pptx", "ppt", "key"],
+      "pathRegex": "(?i)(presentation|slide|deck)"
+    },
+    "target": {
+      "location": "OneDrive://02_Work/Presentations/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 330
+  },
+  {
+    "name": "Spreadsheets-Analysis",
+    "match": {
+      "extensions": ["xlsx", "xls", "csv"],
+      "pathRegex": "(?i)(data|analysis|report|stat)"
+    },
+    "target": {
+      "location": "OneDrive://02_Work/Data/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 310
+  },
+  {
+    "name": "Email-Attachments",
+    "match": {
+      "pathRegex": "(?i)(email|attachment|outlook|mail)",
+      "extensions": ["pdf", "docx", "xlsx", "pptx"]
+    },
+    "target": {
+      "location": "OneDrive://02_Work/Email/",
+      "namingTemplate": "StandardDateContextTitle"
+    },
+    "conflictPolicy": "VersionSuffix",
+    "priority": 290
+  }
+]

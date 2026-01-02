@@ -1,0 +1,14 @@
+{
+  "name": "Photos-EXIF-Organization",
+  "match": {
+    "provider": "fs_local",
+    "extensions": ["jpg", "jpeg", "png", "heic"],
+    "pathRegex": "(?i)(Pictures|Photos)/"
+  },
+  "target": {
+    "location": "OneDrive://user@example.com/04_Media/Photos/{YYYY}/{YYYY-MM}/",
+    "namingTemplate": "StandardDateContextTitle"
+  },
+  "conflictPolicy": "VersionSuffix",
+  "priority": 200
+}

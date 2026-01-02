@@ -1,0 +1,40 @@
+version: 1
+root:
+  - key: personal
+    label: "01_Personal"
+    subcategories:
+      - "Finances"
+      - "Health"
+      - "Legal"
+  - key: work
+    label: "02_Work"
+    subcategories:
+      - "Clients"
+      - "Projects"
+      - "Invoices"
+  - key: tech
+    label: "03_Tech"
+    subcategories:
+      - "Development"
+      - "Documentation"
+      - "99_Archive"
+  - key: media
+    label: "04_Media"
+    subcategories:
+      - "Photos"
+      - "Videos"
+      - "Music"
+rules:
+  maxDepth: 4
+  numericPrefixes: true
+  maxFilesPerFolder: 500
+primary:
+  oneDriveRoot: "OneDrive://user@example.com/"
+archive:
+  providers:
+    - "GoogleDrive://user@example.com/"
+    - "Dropbox://user@example.com/"
+options:
+  useLocalSyncFoldersOnly: true
+  enableExifMetadata: true
+  enableTelemetry: false

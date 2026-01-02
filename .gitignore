@@ -1,0 +1,60 @@
+# Logs
+logs/*.log
+logs/*.jsonl
+!logs/README.md
+
+# Build outputs
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Config (if contains sensitive data)
+config/local-*.json
+config/local-*.yaml
+
+# Temporary
+temp/
+tmp/
+*.tmp
+*.csx
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# Test data
+test-data/
+test-*.json
+test-*.txt
+test-*.csv

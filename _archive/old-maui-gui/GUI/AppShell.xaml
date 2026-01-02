@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="DocsUnmessed.GUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DocsUnmessed.GUI.Views"
+    Title="DocsUnmessed"
+    FlyoutBehavior="Flyout">
+
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="#512BD4" Padding="20" HeightRequest="100">
+            <Label Text="DocsUnmessed" 
+                   TextColor="White" 
+                   FontSize="24" 
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"/>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Dashboard" Icon="icon_dashboard.png">
+        <ShellContent Route="dashboard" ContentTemplate="{DataTemplate local:DashboardPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Assess Files" Icon="icon_scan.png">
+        <ShellContent Route="assess" ContentTemplate="{DataTemplate local:AssessPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Migration" Icon="icon_migrate.png">
+        <ShellContent Route="migration" ContentTemplate="{DataTemplate local:MigrationPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Settings" Icon="icon_settings.png">
+        <ShellContent Route="settings" ContentTemplate="{DataTemplate local:SettingsPage}" />
+    </FlyoutItem>
+
+</Shell>

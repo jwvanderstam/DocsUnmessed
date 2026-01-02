@@ -1,0 +1,28 @@
+{
+  "name": "StandardDateContextTitle",
+  "pattern": "{YYYY}{MM}{DD}_{Context}_{Title}_v{NN}.{ext}",
+  "requirements": {
+    "tokens": ["YYYY", "MM", "DD", "Context", "Title", "NN", "ext"],
+    "NN": {
+      "min": 1,
+      "max": 99,
+      "pad": 2
+    }
+  },
+  "normalization": {
+    "Context": {
+      "case": "TitleCase",
+      "separator": ""
+    },
+    "Title": {
+      "case": "TitleCase",
+      "separator": "_",
+      "trimStopwords": true
+    }
+  },
+  "constraints": {
+    "invalidChars": ["*", ":", "<", ">", "?", "/", "\\", "|", "\""],
+    "maxFileNameLength": 255,
+    "pathLengthBudget": 400
+  }
+}
